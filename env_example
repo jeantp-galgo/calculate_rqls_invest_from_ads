@@ -1,0 +1,10 @@
+DB_USERNAME={usuario de mongodb}
+DB_PASSWORD={contraseña de mongodb}
+MANAGEMENT_TOKEN=CFPAT-{API Key de contentful (aplicar cambios de relevancia en la PLP via API)}
+SPACE_ID= {space_id de contentful}
+ENVIRONMENT= {ambiente de desarrollo}
+API_TOKEN = {de amplitude}
+API_KEY = {de amplitude}
+API_SECRET =  {de amplitude}
+WORKSPACE_ID = {de amplitude}
+PROJECT_ID = {de amplitude}
