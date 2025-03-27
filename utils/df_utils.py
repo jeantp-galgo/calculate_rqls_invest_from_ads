@@ -1,0 +1,10 @@
+import pandas as pd
+
+def fill_na_columns(df, columns_to_fill):
+    for column in columns_to_fill["columns"]:
+        df[column] = pd.to_numeric(df[column], errors='coerce')
+        df[column] = df[column].fillna(columns_to_fill["value"])
+        df[column] = df[column].astype(columns_to_fill["data_type"])
+    return df
+
+
