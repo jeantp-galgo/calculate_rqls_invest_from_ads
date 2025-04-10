@@ -7,4 +7,11 @@ def fill_na_columns(df, columns_to_fill):
         df[column] = df[column].astype(columns_to_fill["data_type"])
     return df
 
-
+def set_week_and_year(df):
+    """
+    Agrega columnas con el número de semana y año
+    """
+    df['Date'] = pd.to_datetime(df['Date'])
+    df['Semana'] = df['Date'].dt.isocalendar().week
+    df['Año'] = df['Date'].dt.year
+    return df
