@@ -1,8 +1,13 @@
 def classify_ads(texto):
+    """
+    Clasifica las marcas de los anuncios apartir de un texto
+    """
+
+
     # Lista completa de marcas
     marcas = ['Bajaj', 'Italika', 'Honda', 'Vento', 'CF Moto', 'Yamaha', 'KTM',
             'Benelli', 'Suzuki', 'TVS', 'Kawasaki', 'Zmoto', 'Zontes',
-            'Dinamo', 'MB', 'Hero', 'Royal Enfield', 'Super Soco', 'BDS',
+            'Dinamo', 'MB', 'Hero', 'Royal Enfield', 'Super Soco', 'BDS', 'Jiajue',
             'Treck']
 
     if not isinstance(texto, str):
@@ -16,7 +21,7 @@ def classify_ads(texto):
         "italika": ["italika"],
         "honda": ["honda", "cb190r"],
         "vento": ["vento"],
-        "cf moto": ["cf moto", "cfmoto", "cf-moto"],
+        "cf moto": ["cf moto", "cfmoto", "cf-moto", "cf"],
         "yamaha": ["yamaha"],
         "ktm": ["ktm"],
         "benelli": ["benelli"],
@@ -31,6 +36,7 @@ def classify_ads(texto):
         "royal enfield": ["royal enfield", "royalenfield", "royal-enfield", "enfield"],
         "super soco": ["super soco", "supersoco", "super-soco"],
         "bds": ["bds"],
+        "jiajue": ["jiajue"],
         "treck": ["treck"]
     }
     
