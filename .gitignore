@@ -127,3 +127,5 @@ outputs/
 test.csv
 
 trash/
+invest_per_state/outputs/RQLs Amplitude/*
+invest_per_state/outputs/Totales/*
