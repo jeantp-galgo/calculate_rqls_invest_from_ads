@@ -2,7 +2,7 @@ import pandas as pd
 from utils.calculate_utils import *
 
 
-def calculate_invest_per_week(df):
+def calculate_invest_per_week(df: pd.DataFrame):
     """
      Calcula el costo total por semana y año
     """
@@ -10,7 +10,7 @@ def calculate_invest_per_week(df):
     df_resumen_semana_año = df_resumen.sort_values(['Año', 'Semana', 'Cost'], ascending=[True, True, False])
     return df_resumen_semana_año
 
-def calculate_invest_from_plataforms(df_meta_ads: pd.DataFrame, df_google_ads: pd.DataFrame, show_result: bool = False):
+def calculate_invest_from_plataforms_per_brand(df_meta_ads: pd.DataFrame, df_google_ads: pd.DataFrame, show_result: bool = False):
     """
         Calcula el costo total por semana y año de ambas plataformas
     """
