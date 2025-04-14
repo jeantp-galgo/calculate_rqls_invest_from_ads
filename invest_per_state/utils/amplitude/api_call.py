@@ -4,7 +4,7 @@ from datetime import datetime
 import pandas as pd
 import json
 import re
-
+import os
 from dotenv import load_dotenv
 # Cargar variables de entorno
 load_dotenv()
@@ -19,7 +19,7 @@ def get_rql_data(actual_date):
         'Accept-Encoding': 'gzip, deflate, br',
         'Connection': 'keep-alive',
         'User-Agent': 'PostmanRuntime/7.43.2',
-        'Authorization': 'Basic ZWFiMmRlYmU5NmE2ZTRlOTkxODQ1MzgwZWVlN2IwMjQ6NjQ5NjUwYTY1NWJkMTQ0YTM2ODQ4N2M4ZjUyNDdmNmY='
+        'Authorization': f'{os.getenv("AUTHORIZATION")}'
     }
 
     print("Iniciando solicitud...")
