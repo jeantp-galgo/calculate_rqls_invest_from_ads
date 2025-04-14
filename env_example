@@ -8,3 +8,4 @@ API_KEY = {de amplitude}
 API_SECRET =  {de amplitude}
 WORKSPACE_ID = {de amplitude}
 PROJECT_ID = {de amplitude}
+AUTHORIZATION = {de amplitude y se saca Base 64}
