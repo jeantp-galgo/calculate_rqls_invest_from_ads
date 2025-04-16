@@ -6,7 +6,7 @@ def calculate_invest_per_week(df: pd.DataFrame):
     """
      Calcula el costo total por semana y año
     """
-    df_resumen = df.groupby(['Marca', 'Semana', 'Año'])['Cost'].sum().reset_index()
+    df_resumen = df.groupby(['Marca', 'Region', 'Semana', 'Año'])['Cost'].sum().reset_index()
     df_resumen_semana_año = df_resumen.sort_values(['Año', 'Semana', 'Cost'], ascending=[True, True, False])
     return df_resumen_semana_año
 
@@ -30,7 +30,31 @@ def calculate_invest_from_plataforms_per_brand(df_meta_ads: pd.DataFrame, df_goo
     if show_result:
         # print(f"Costo total: {costo_total}")
         display(resumen_total)
+
     return resumen_total
+
+def add_totals(valores):
+    total_row = pd.Series(valores)
+    return pd.DataFrame([total_row])
+
+def calculate_invest_per_plataforms_per_brand(df_investment_per_plataforms_per_brand: pd.DataFrame, week: int):
+    display(df_investment_per_plataforms_per_brand)
+    df_investment_per_plataforms_per_brand = df_investment_per_plataforms_per_brand[df_investment_per_plataforms_per_brand["Semana"] == week]
+
+    per_brand = df_investment_per_plataforms_per_brand.groupby(["Marca"])[["cost_meta", "cost_gads"]].sum().reset_index()
+    costo_total_meta_per_brand = int(df_investment_per_plataforms_per_brand["cost_meta"].sum())
+    costo_total_gads_per_brand = int(df_investment_per_plataforms_per_brand["cost_gads"].sum())
+    total_cost_per_brand = int(costo_total_meta_per_brand + costo_total_gads_per_brand)
+
+
+    df_total = add_totals({"Marca": "Total", "cost_meta": costo_total_meta_per_brand, "cost_gads": costo_total_gads_per_brand})
+    per_brand_with_totals = pd.concat([per_brand, df_total]) 
+
+    per_brand_with_totals["cost_meta"] = per_brand_with_totals["cost_meta"].astype(int) 
+    per_brand_with_totals["cost_gads"] = per_brand_with_totals["cost_gads"].astype(int) 
+
+    return per_brand_with_totals
+
 
 def calculate_generic_invest(df: pd.DataFrame, week: int):
     """
@@ -43,7 +67,6 @@ def calculate_generic_invest(df: pd.DataFrame, week: int):
 
     # Obtener el valor de inversión para la Genérica
     valor_cost_generica = int(invest_total_week[invest_total_week["Marca"] == "Generica"]["Cost"].values[0])
-    print(f"Inversión genérica semana {week} es: {valor_cost_generica}")
     return valor_cost_generica
 
 def calculate_generic_invest_distribution(df: pd.DataFrame, generic_invest: int, total_models: int, show_result: bool = False):
